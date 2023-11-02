@@ -1,0 +1,30 @@
+{
+  "name": "Netcup CCP Domains anzeigen",
+  "description": "Zeigt die Domains im CCP auf der Produkte-Seite an",
+  "version": "0.1",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "content_scripts": [{
+    "js": ["scripts/content.js"],
+    "matches": [
+      "https://www.customercontrolpanel.de/produkte.php"
+    ]
+  }],
+  "icons": {
+    "16": "/images/icon.png",
+    "32": "/images/icon.png",
+    "48": "/images/icon.png",
+    "128": "/images/icon.png"
+  },
+  "permissions": ["activeTab", "scripting"],
+  "action": {
+    "default_icon": {
+      "16": "/images/icon.png",
+      "32": "/images/icon.png",
+      "48": "/images/icon.png",
+      "128": "/images/icon.png"
+    }
+  }
+}
