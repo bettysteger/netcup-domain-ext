@@ -18,7 +18,7 @@
     "48": "/images/icon.png",
     "128": "/images/icon.png"
   },
-  "permissions": ["activeTab", "scripting"],
+  "permissions": ["activeTab", "scripting", "storage"],
   "action": {
     "default_icon": {
       "16": "/images/icon.png",

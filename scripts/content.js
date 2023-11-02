@@ -24,16 +24,26 @@ async function getDomainFromProductDetail(id) {
   return json.content.match(/<h1>Verwaltung und Konfigurationen der Domain (.+)<\/h1>/)[1];
 }
 
+function setDomain(element, domain) {
+  element.parentElement.parentElement.previousElementSibling.children[1].innerHTML = domain;
+  element.domain = domain;
+}
+
 function init() {
   Array.from(document.body.getElementsByClassName('detailtab')).forEach((element, i) => {
     if (element.domain) { return; }
+
+    chrome.storage.sync.get(element.id, (result) => {
+      if (result[element.id]) { setDomain(element, result[element.id]); }
+    });
+
     const id = parseInt(element.id.replace('produktdetails_', ''), 10);
 
     setTimeout(async () => {
       await getNoCsrfToken();
       const domain = await getDomainFromProductDetail(id);
-      element.parentElement.parentElement.previousElementSibling.children[1].innerHTML = domain;
-      element.domain = domain;
+      setDomain(element, domain);
+      chrome.storage.sync.set({ [element.id]: domain });
     }, i * 1500);
   });
 }
