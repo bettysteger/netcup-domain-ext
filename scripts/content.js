@@ -1,3 +1,4 @@
+// rebuild original method, because cannot access window.getNoCsrfToken() from content script
 async function getNoCsrfToken() {
   const sessionhash = document.head.innerHTML.match(/sessionhash = "(.+?)";/)[1];
   const response = await fetch('nocsrf_ajax.php?action=getnocsrftoken', {
@@ -40,7 +41,6 @@ function init() {
     const id = parseInt(element.id.replace('produktdetails_', ''), 10);
 
     setTimeout(async () => {
-      await getNoCsrfToken();
       const domain = await getDomainFromProductDetail(id);
       setDomain(element, domain);
       chrome.storage.sync.set({ [element.id]: domain });
@@ -48,4 +48,5 @@ function init() {
   });
 }
 
+// wait for page load
 setTimeout(init, 1000);
