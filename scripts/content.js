@@ -22,7 +22,13 @@ async function getDomainFromProductDetail(id) {
   })
   const json = await response.json();
   if (!json.status) { return; }
-  return json.content.match(/<h1>Verwaltung und Konfigurationen der Domain (.+)<\/h1>/)[1];
+  const domainsSelect = json.content.match(/<select id=\"pleskHostingDomainSelect\"(.+?)<\/select>/s);
+  if (!domainsSelect || !domainsSelect[0]) {
+    return json.content.match(/<h1>Verwaltung und Konfigurationen der Domain (.+)<\/h1>/)[1];
+  }
+  // get all domain names (value attribute does not matter)
+  const domains = domainsSelect[0].match(/<option value=\"\d\">(.+?)<\/option>/gs).map((domain) => domain.match(/<option value=\"\d\">(.+?)<\/option>/)[1]);
+  return domains.join(', ');
 }
 
 function setDomain(element, domain) {
