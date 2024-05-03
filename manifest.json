@@ -1,7 +1,7 @@
 {
   "name": "Netcup CCP Domains anzeigen",
   "description": "Zeigt die Domains im CCP auf der Produkte-Seite an",
-  "version": "0.1",
+  "version": "0.2",
   "manifest_version": 3,
   "background": {
     "service_worker": "scripts/background.js"
