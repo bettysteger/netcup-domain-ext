@@ -4,7 +4,7 @@ Wenn man mehrere Hosting-Produkte hat mit verschiedenen Domains, kennt man sich 
 
 Diese Chrome Extension lädt die Domains und zeigt diese in der Account-Bezeichnung an, sobald man auf die Seite kommt, um einen viel besseren Überblick zu haben.
 
-[![Netcup](https://www.netcup.de/static/assets/images/promotion/netcup-setC-468x60.png)](https://www.netcup.de/?ref=189769)
+[![Netcup](https://www.netcup.com/uploads/netcup_set_C_728x90_b94e135b39.png)](https://www.netcup.de/?ref=189769)
 
 # Datenschutzerklärung
 
